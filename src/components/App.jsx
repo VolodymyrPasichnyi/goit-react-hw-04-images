@@ -42,8 +42,8 @@ export const App = () => {
       setStatus(value)
     }
 
-    const totalHits = totalHits => {
-      setTotalHits(totalHits)
+    const totalHits = total => {
+      setTotalHits(total)
     }
 
     const imageList = data => {
@@ -62,15 +62,15 @@ export const App = () => {
        const data = async () => {
         statusChange(true)
         try {
-          const { hits, totalhits} = await pixabayApi(search, page)
+          const { hits, total} = await pixabayApi(search, page)
           if (hits.length === 0) {
             return toast.error(`No find images`)
           }
           if (page === 1) {
-            toast.success(`We found ${totalhits} images`)
+            toast.success(`We found ${total} images`)
           }
           imageList(hits)
-          totalHits(totalhits)
+          totalHits(total)
         } catch (error) {
           return toast.error(`Please, try again later`)
         } finally {
