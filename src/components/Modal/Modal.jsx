@@ -1,39 +1,35 @@
-import { Component } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import css from '../Modal/Modal.module.css'
+import { useEffect } from 'react';
 
 const modalRoot = document.querySelector('#modal-root')
 
+export const Modal = ({ largeImage, toggleModal }) => {
+    const handleClose = (e) => {
+      if(e.target === e.currentTarget || e.code === 'Escape') 
+        toggleModal()
+    }
 
-export class Modal extends Component {
-  handleClose = e => {
-    if (e.target === e.currentTarget || e.code === 'Escape')
-      this.props.toggleModal()
-  }
+    useEffect(() => {
+      window.addEventListener('keydown', this.handleClose)
+      return() => {
+        window.removeEventListener('keydown', this.handleClose)
+    }
+})
 
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleClose)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleClose)
-  }
-
-  render() {
-    const { largeImage } = this.props
-    return createPortal(
+  return createPortal(
       <div
          className={css.Overlay}
-         onClick={this.handleClose}>
+         onClick={handleClose}>
         <div className={css.Modal}>
           <img src={largeImage} alt="" />
         </div>
       </div>,
       modalRoot
     )
-  }
 }
+
 
 Modal.propTypes = {
   toggleModal: PropTypes.func.isRequired,

@@ -1,24 +1,20 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
 import css from '../ImageGalleryItem/ImageGalleryItem.module.css'
 
 
-export class ImageGalleryItem extends Component {
-  clickModal = () => {
-    this.props.largeImages(this.props.largeImg)
-    this.props.toggleModal()
-  };
-
-  render() {
-    const { image, tags } = this.props
-    return (
-      <li
-        className={css.ImageGalleryItem} 
-        onClick={this.clickModal}>
-        <img src={image} alt={tags} />
-      </li>
-    )
+export const ImageGalleryItem = ({ image, tags, largeImages, largeImg, toggleModal }) => {
+  const clickModal = () => {
+    largeImages(largeImg)
+    toggleModal()
   }
+
+  return (
+    <li
+      className={css.ImageGalleryItem} 
+      onClick={clickModal}>
+      <img src={image} alt={tags} />
+    </li>
+  )
 }
 
 ImageGalleryItem.propTypes = {
