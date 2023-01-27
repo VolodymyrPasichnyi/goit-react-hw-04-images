@@ -19,7 +19,6 @@ export const App = () => {
     const [largeImage, setLargeImage] = useState(null)
     const [status, setStatus] = useState(false)
     const [modal, setModal] = useState(false)
-    const [error, setError] = useState(null)
 
     const handleSubmit = search => {
       setSearch(search)
@@ -73,7 +72,6 @@ export const App = () => {
           imageList(hits)
           totalHits(totalhits)
         } catch (error) {
-          setError(error)
           return toast.error(`Please, try again later`)
         } finally {
           statusChange(false)
@@ -82,32 +80,6 @@ export const App = () => {
        data()
     }, [page, search])
 
-    //   async componentDidUpdate(_,prevProps) {
-//     const currentSearch = this.state.search
-//     const prevSearch = prevProps.search
-//     const currentPage = this.state.page
-//     const prevPage = prevProps.page
-
-//     if (prevSearch !== currentSearch || prevPage !== currentPage) {
-//       this.statusChange(true)
-//       try {
-//         const data = await pixabayApi(currentSearch, currentPage)
-        // if (data.hits.length === 0) {
-        //   return toast.error(`No find images`)
-        // }
-        // if (currentPage === 1) {
-        //   toast.success(`We found ${data.totalHits} images`)
-        // }
-//         this.imageList(data.hits)
-//         this.totalHits(data.totalHits)
-//       } catch (error) {
-//         this.setState({ error })
-        // return toast.error(`Please, try again later`)
-//       } finally {
-//         this.statusChange(false)
-//       }
-//     }
-//   }
 
   return (
         <div>

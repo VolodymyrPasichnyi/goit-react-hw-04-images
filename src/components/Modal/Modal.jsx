@@ -12,9 +12,9 @@ export const Modal = ({ largeImage, toggleModal }) => {
     }
 
     useEffect(() => {
-      window.addEventListener('keydown', this.handleClose)
+      window.addEventListener('keydown', handleClose)
       return() => {
-        window.removeEventListener('keydown', this.handleClose)
+        window.removeEventListener('keydown', handleClose)
     }
 })
 
