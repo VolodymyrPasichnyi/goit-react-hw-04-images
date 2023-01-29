@@ -107,10 +107,11 @@ export const App = () => {
                 toggleModal={toggleModal}
               />
             )}
-            {list.length !== 0 && !status && totalhits > 12 && (
+            {list.length && !status && totalhits > 12 && (
               <Button loadMore={loadMore} />
             )}
         </div>
       )
 }
 
+ 
