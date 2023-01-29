@@ -4,7 +4,6 @@ import css from '../Searchbar/Searchbar.module.css'
 import { useState } from 'react';
 
 
-
 export const Searchbar = ({ onSubmit }) => {
     const [search, setSearch] = useState('')
 
