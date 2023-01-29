@@ -42,8 +42,8 @@ export const App = () => {
       setStatus(value)
     }
 
-    const totalHits = total => {
-      setTotalHits(total)
+    const totalHits = totalhits => {
+      setTotalHits(totalhits)
     }
 
     const imageList = data => {
@@ -67,7 +67,7 @@ export const App = () => {
             return toast.error(`No find images`)
           }
           if (page === 1) {
-            toast.success(`We found ${total} images`)
+             toast.success(`We found ${total} images`)
           }
           imageList(hits)
           totalHits(total)
@@ -107,7 +107,7 @@ export const App = () => {
                 toggleModal={toggleModal}
               />
             )}
-            {list && totalhits > 12 && (
+            {list && !status && totalhits > 12 && (
               <Button loadMore={loadMore} />
             )}
         </div>
